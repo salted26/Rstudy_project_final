@@ -1,6 +1,7 @@
 import React from 'react';
 import './Homepage.style.css'
 import Banner from "./components/Banner/Banner";
+import PopularMovieSlide from "./components/PopularMovieSlide/PopularMovieSlide";
 
 // 1. 배너
 // 2. popular movie
@@ -10,6 +11,7 @@ const HomePage = () => {
     return (
         <div>
             <Banner />
+            <PopularMovieSlide />
         </div>
     );
 };
