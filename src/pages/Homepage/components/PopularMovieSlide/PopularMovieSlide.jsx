@@ -25,21 +25,11 @@ const PopularMovieSlide = () => {
 
     const { data, isLoading, isError, error } = usePopularMoviesQuery()
 
-    console.log("data results", data)
-
     if(isLoading){
-        return (
-            <div>
-                <h5>Loading.... </h5>
-            </div>
-        )
+        return (<div> <h5>Loading.... </h5></div> )
     }
     if (isError) {
-        return (
-            <div>
-                <Alert varian="danger">{error.message}</Alert>
-            </div>
-        )
+        return (<div> <Alert varian="danger">{error.message}</Alert> </div>)
     }
     return (
         <div>

@@ -10,19 +10,11 @@ const Banner = () => {
     const image = `https://image.tmdb.org/t/p/w533_and_h300_bestv2${data?.results[0].poster_path}`;
     const url = "url(" + image + ")";
 
-    if (isLoading) {
-        return (
-            <div>
-                <h5>Loading...</h5>
-            </div>
-        )
+    if(isLoading){
+        return (<div> <h5>Loading.... </h5></div> )
     }
     if (isError) {
-        return (
-            <div>
-                <Alert varian="danger">{error.message}</Alert>
-            </div>
-        )
+        return (<div> <Alert varian="danger">{error.message}</Alert> </div>)
     }
     return (
         <div className="banner-container" style={{backgroundImage:url}} >
