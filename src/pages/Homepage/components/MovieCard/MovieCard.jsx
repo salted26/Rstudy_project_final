@@ -29,7 +29,7 @@ const MovieCard = ({movie}) => {
         return (<div> <Alert varian="danger">{error.message}</Alert> </div>)
     }
     return (
-        <div className="movie-card" style={{backgroundImage: url}}>
+        <div className="movie-card" style={{backgroundImage: url, backgroundSize:'cover', width:'100%'}} >
             <div className="overlay">
                 <div className="title"><h3>{movie?.title}</h3></div>
                 <div className="average">{movie?.vote_average}</div>
