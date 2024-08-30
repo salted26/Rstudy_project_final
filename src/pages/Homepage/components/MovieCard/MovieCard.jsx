@@ -36,7 +36,7 @@ const MovieCard = ({movie}) => {
                 <div className="count">{movie?.vote_count}</div>
                 <div className="genres">
                     {movie?.genre_ids.map((genre, index) => (
-                        <Badge bg="danger">{genre}</Badge>
+                        <Badge bg="danger" key={index}>{genre}</Badge>
                     ))}
                 </div>
                 <div className="popular">
