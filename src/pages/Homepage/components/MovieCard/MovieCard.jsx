@@ -5,7 +5,7 @@ import React, {useEffect} from "react";
 
 const MovieCard = ({movie}) => {
 
-    const {data, isLoading, isError, error} = useMovieGenreQuery();
+    const {isLoading, isError, error} = useMovieGenreQuery();
 
 
     const image = `https://image.tmdb.org/t/p/w533_and_h300_bestv2${movie.poster_path}`;
