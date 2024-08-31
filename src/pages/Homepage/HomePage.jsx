@@ -3,6 +3,7 @@ import './Homepage.style.css'
 import Banner from "./components/Banner/Banner";
 import PopularMovieSlide from "./components/PopularMovieSlide/PopularMovieSlide";
 import TopRatedMovieSlide from "./components/TopRatedMovieSlide/TopRatedMovieSlide";
+import UpCommingMovie from "./components/UpCommingMovie/UpCommingMovie";
 
 // 1. 배너
 // 2. popular movie
@@ -14,6 +15,7 @@ const HomePage = () => {
             <Banner />
             <PopularMovieSlide />
             <TopRatedMovieSlide />
+            <UpCommingMovie />
         </div>
     );
 };

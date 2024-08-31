@@ -1,6 +1,6 @@
 .movie-card {
-    height: 420px;
-    width: 310px;
+    height: 300px;
+    width: auto;
     background-size: cover;
     cursor: pointer;
     transition: 0.5s;
@@ -16,7 +16,7 @@
     height: 100%;
     background-color: rgba(43, 41, 41, 0.9);
     opacity: 0;
-    tansition: all 1s;
+    tansition: 1s;
     color: white;
     font-weight: bold;
     overflow-wrap: break-word;
@@ -49,4 +49,18 @@
 
 .adult > img{
     width: 40px;
+}
+
+@media only screen and (max-width:699px) {
+    .movie-card {
+        height: 300px;
+        width: auto;
+    }
+    .movie-card:hover {
+        width: 100%;
+        height: 100%;
+        transform: scale(1) translateZ(20px);
+        z-index: 2;
+    }
+
 }

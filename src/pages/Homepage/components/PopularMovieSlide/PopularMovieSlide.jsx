@@ -3,7 +3,7 @@ import {usePopularMoviesQuery} from "../../../../hooks/usePopularMovies";
 import {Alert} from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "../../../../common/MovieCard/MovieCard";
 import './PopularMovieSlide.style.css'
 
 const responsive = {
@@ -44,7 +44,7 @@ const PopularMovieSlide = () => {
                 {data.results.map((movie, index)=> (
                     <MovieCard movie={movie} key={index} />
                 ))}
-            </Carousel>;
+            </Carousel>
         </div>
     );
 };

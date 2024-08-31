@@ -1,5 +1,5 @@
 import './MovieCard.style.css'
-import {useMovieGenreQuery} from "../../../../hooks/useMovieGenre";
+import {useMovieGenreQuery} from "../../hooks/useMovieGenre";
 import {Alert, Badge} from "react-bootstrap";
 import React, {useEffect} from "react";
 

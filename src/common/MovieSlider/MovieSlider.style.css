@@ -1,0 +1,26 @@
+.carousel-container {
+    overflow: hidden;
+    height: 350px;
+}
+
+.movie-slider {
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.title {
+    font-size: 25px;
+}
+
+@media(max-width:699px) {
+    .carousel-container {
+        height: 330px;
+        width: auto;
+    }
+    .title {
+        font-size: 20px;
+    }
+    .react-multi-carousel-dot {
+        display: none;
+    }
+}

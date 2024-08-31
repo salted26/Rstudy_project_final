@@ -1,8 +1,9 @@
 import React from 'react';
 import {useTopRatedMoviesQuery} from "../../../../hooks/useTopRatedMovies";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "../../../../common/MovieCard/MovieCard";
 import {Alert} from "react-bootstrap";
 import Carousel from "react-multi-carousel";
+import './TopRatedMovieSlide.style.css'
 
 const responsive = {
     desktop: {
@@ -43,7 +44,7 @@ const TopRatedMovieSlide = () => {
                 {data.results.map((movie, index)=> (
                     <MovieCard movie={movie} key={index} />
                 ))}
-            </Carousel>;
+            </Carousel>
         </div>
     );
 };
