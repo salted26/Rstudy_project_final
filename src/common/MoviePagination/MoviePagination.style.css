@@ -1,0 +1,48 @@
+.pagination {
+    margin-top: 2rem;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.pagination li > a {
+    background-color: black;
+    border: none;
+    color: white;
+    --bs-pagination-active-bg:red;
+    --bs-pagination-hover-bg:grey;
+    --bs-pagination-hover-color: white ;
+    --bs-pagination-disabled-bg:black;
+    --bs-pagination-disabled-color:white;
+}
+
+.mobile-pagination {
+    margin-top: 2rem;
+    display: flex;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.mobile-pagination li > a {
+    background-color: black;
+    border: none;
+    color: red;
+    font-weight: 600;
+    --bs-pagination-active-bg:red;
+    --bs-pagination-disabled-bg:black;
+    --bs-pagination-disabled-color:white;
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 699px) {
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+}

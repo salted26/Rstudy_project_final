@@ -14,7 +14,7 @@ const NotFoundPage = () => {
                         <h2>404 Error</h2>
                     </Col>
                     <Col lg={6}>
-                        <div>
+                        <div className="error-container">
                             <h1>Sorry, the Page not Found</h1><br />
                             <h3>The link you followed probable broken</h3><br/>
                             <h3>or the page has been removed</h3><br/>
