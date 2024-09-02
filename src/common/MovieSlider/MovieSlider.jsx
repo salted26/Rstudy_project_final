@@ -3,9 +3,8 @@ import './MovieSlider.style.css'
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import MovieCard from "../MovieCard/MovieCard";
-import {responsive} from "../../constants/responsive";
 
-const MovieSlider = ({ title, movies}) => {
+const MovieSlider = ({ title, movies, responsive}) => {
     return (
         <div className="movie-slider">
             <div className="title">{title}</div>
@@ -16,7 +15,7 @@ const MovieSlider = ({ title, movies}) => {
                 renderDotsOutside
                 responsive={responsive}
                 rewindWithAnimation={false}
-                showDots={responsive.mobile == true ? false : true}
+                showDots={responsive.mobile !== true ? true : false}
             >
                 {movies?.results.map((movie, index) => (
                     <MovieCard movie={movie} key={index}/>

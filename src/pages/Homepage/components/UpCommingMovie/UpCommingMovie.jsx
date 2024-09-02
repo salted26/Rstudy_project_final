@@ -1,8 +1,9 @@
 import React from 'react';
 import {Alert} from "react-bootstrap";
 import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
-import './UpCommingMovie.style.css'
+import '../../../../common/MovieSlider/MovieSlider.style.css'
 import {useUpCommingMovieQuery} from "../../../../hooks/useUpCommingMovie";
+import {responsive} from "../../../../constants/responsive";
 
 const UpCommingMovie = () => {
 
@@ -17,7 +18,7 @@ const UpCommingMovie = () => {
 
     return (
         <div>
-            <MovieSlider movies={data} title={"UpComming Movies"} />
+            <MovieSlider movies={data} title={"UpComming Movies"} responsive={responsive}/>
         </div>
     );
 };

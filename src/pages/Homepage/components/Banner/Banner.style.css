@@ -3,6 +3,7 @@
     min-width: 100vw;
     background-size: cover;
     background-position: left;
+    border: none;
 }
 
 .banner-container::before {
@@ -26,4 +27,20 @@
     align-items: flex-start;
 
     padding: 2rem;
+}
+
+@media screen and (max-width: 699px) {
+    .title-container {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+    .title-container > h1 {
+        z-index: 1;
+    }
+    .title-container > p {
+        display: none;
+    }
 }

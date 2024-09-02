@@ -1,25 +1,10 @@
 import React from 'react';
 import {usePopularMoviesQuery} from "../../../../hooks/usePopularMovies";
 import {Alert} from "react-bootstrap";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import MovieCard from "../../../../common/MovieCard/MovieCard";
-import './PopularMovieSlide.style.css'
-
-const responsive = {
-    desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 5
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 3
-    },
-    mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 1
-    }
-};
+import '../../../../common/MovieSlider/MovieSlider.style.css'
+import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
+import {responsive} from "../../../../constants/responsive";
 
 const PopularMovieSlide = () => {
 
@@ -33,18 +18,7 @@ const PopularMovieSlide = () => {
     }
     return (
         <div>
-            PopularMovieSlide
-            <Carousel
-                infinite={true}
-                centerMode={true}
-                responsive={responsive}
-                containerClass="carousel-container"
-                itemClass="carousel-item-padding-40-px"
-            >
-                {data.results.map((movie, index)=> (
-                    <MovieCard movie={movie} key={index} />
-                ))}
-            </Carousel>
+            <MovieSlider movies={data} title={"Popular Movies"} responsive={responsive}/>
         </div>
     );
 };
