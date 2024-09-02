@@ -10,6 +10,17 @@ const Banner = () => {
     const image = `https://image.tmdb.org/t/p/w533_and_h300_bestv2${data?.results[0].poster_path}`;
     const url = "url(" + image + ")";
 
+    const overview = () => {
+        let content = data?.results[0].overview.length;
+        if(content > 150) {
+            content = data?.results[0].overview.substring(0, 150) + "...";
+        } else {
+            content = '';
+        }
+        console.log(content)
+        return content;
+    }
+
     if(isLoading){
         return (<div> <h5>Loading.... </h5></div> )
     }
@@ -20,7 +31,9 @@ const Banner = () => {
         <div className="banner-container" style={{backgroundImage:url}} >
             <div className="title-container">
                 <h1>{data?.results[0].title}</h1>
-                <p>{data?.results[0].overview}</p>
+                <p>
+                    {overview()}
+                </p>
             </div>
         </div>
     );
