@@ -2,14 +2,15 @@ import './MovieCard.style.css'
 import {useMovieGenreQuery} from "../../hooks/useMovieGenre";
 import {Badge} from "react-bootstrap";
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 const MovieCard = ({movie}) => {
 
     const {data:genreData} = useMovieGenreQuery();
+    const navigate = useNavigate();
 
-    const image = `https://image.tmdb.org/t/p/w533_and_h300_bestv2${movie.poster_path}`;
+    const image = `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
     const url = "url(" + image + ")";
-
 
     const showGenre = (genreIdList) => {
         if(!genreData) return [];
@@ -20,10 +21,32 @@ const MovieCard = ({movie}) => {
         return genreNameList;
     }
 
+    const handleMovie = () => {
+        navigate(`/movies/${movie.id}`);
+    }
+
+    const movieTitle = () => {
+        if(movie?.original_language === 'en') {
+            return (
+                <>
+                    <h3>{movie.original_title}</h3>
+                    <h5>{movie.title}</h5>
+                </>
+            )
+        } else {
+            return (
+                <h3>{movie.title}</h3>
+            )
+        }
+
+    }
+
     return (
-        <div className="movie-card" style={{backgroundImage: url, backgroundSize:'cover', width:'100%'}} >
+        <div className="movie-card" style={{backgroundImage: url, backgroundSize:'cover', width:'100%'}} onClick={handleMovie}>
             <div className="overlay">
-                <div className="title"><h3>{movie?.title}</h3></div>
+                <div className="title">
+                    {movieTitle()}
+                </div>
                 <div className="average">{movie?.vote_average}</div>
                 <div className="count">{movie?.vote_count}</div>
                 <div className="genres">

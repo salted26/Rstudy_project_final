@@ -1,0 +1,16 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.poster-img {
+    width: 70%;
+    height: auto;
+}
+
+.detail-title{
+    font-weight: bold;
+    font-size: 45px;
+}

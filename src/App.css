@@ -17,3 +17,9 @@
     font-weight: 400;
     font-style: normal;
 }
+
+.none-link {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}

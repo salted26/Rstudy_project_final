@@ -9,7 +9,6 @@ import {responsive} from "../../../../constants/responsive";
 const PopularMovieSlide = () => {
 
     const { data, isLoading, isError, error } = usePopularMoviesQuery()
-
     if(isLoading){
         return (<div> <h5>Loading.... </h5></div> )
     }

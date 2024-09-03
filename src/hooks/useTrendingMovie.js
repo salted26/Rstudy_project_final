@@ -2,10 +2,10 @@ import {useQuery} from "@tanstack/react-query";
 import api from "../utils/api"
 
 const fetchMovieGenre = () => {
-    return api.get('/genre/movie/list?language=ko-KR')
+    return api.get('/rending/movie/{time_window}') // day, week, month
 }
 
-export const useMovieGenreQuery = () => {
+export const useTrendingMovieQuery = () => {
     return useQuery({
         queryKey: ['movie-genre'],
         queryFn: fetchMovieGenre,

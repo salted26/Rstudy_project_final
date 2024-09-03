@@ -7,7 +7,7 @@ const Banner = () => {
 
     const {data, isLoading, isError, error} = usePopularMoviesQuery();
 
-    const image = `https://image.tmdb.org/t/p/w533_and_h300_bestv2${data?.results[0].poster_path}`;
+    const image = `https://image.tmdb.org/t/p/w1280${data?.results[0].poster_path}`;
     const url = "url(" + image + ")";
 
     const overview = () => {
@@ -17,7 +17,6 @@ const Banner = () => {
         } else {
             content = '';
         }
-        console.log(content)
         return content;
     }
 
