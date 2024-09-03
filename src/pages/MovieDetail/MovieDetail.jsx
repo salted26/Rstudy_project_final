@@ -29,7 +29,7 @@ const MovieDetail = () => {
     }
 
     const movieTitle = () => {
-        if(movie?.original_language === 'en') {
+        if(movie?.original_language === 'en' && movie?.original_title !== movie?.title) {
             return (
                 <>
                     <h3>{movie.original_title}</h3>
@@ -77,35 +77,39 @@ const MovieDetail = () => {
                                         alt="All"/>}
                             </div>
                         </Row>
-                        <div className="movie-release"><b>RELREASE&nbsp; :&nbsp; </b>{movie?.release_date}</div>
-                        <div className="movie-run"><b>RUN&nbsp;TIME&nbsp;:&nbsp;</b>{movie?.runtime}</div>
+                        <div className="movie-release"><b>개봉일&nbsp; :&nbsp; </b>{movie?.release_date}</div>
+                        <div className="movie-run"><b>상영시간&nbsp;:&nbsp;</b>{movie?.runtime}&nbsp;분</div>
                         <div className="movie-genres">
                             {showGenre(movie?.genres).map((genre, index) => (
                                 <h4 key={index}><Badge bg="danger">{genre}</Badge></h4>
                             ))}
                         </div>
                         <div className="movie-tag">{movie?.tagline}</div>
-                        <div className="movie-overview">
-                            <p><b>OVERVIEW</b></p>
-                            {movie?.overview}
-                        </div>
+                        {movie?.overview !=='' ?
+                            <div className="movie-overview">
+                            <p><b>줄거리</b></p>
+                                {movie?.overview}
+                            </div>
+                            : <div className="movie-overview"></div>
+                            }
+
                         <div className="movie-vote">
                             <div>
-                                <h3><Badge pill bg="success" size="sm">Average</Badge></h3>
+                                <h3><Badge pill bg="success" size="sm">평균</Badge></h3>
                                 <b>{movie?.vote_average}</b>
                             </div>
                             <div>
-                                <h3><Badge pill bg="success" size="sm">Count</Badge></h3>
+                                <h3><Badge pill bg="success" size="sm">투표수</Badge></h3>
                                 <b>{movie?.vote_count}</b>
                             </div>
                             <div>
-                                <h3><Badge pill bg="success" size="sm">Popularity</Badge></h3>
+                                <h3><Badge pill bg="success" size="sm">인기점수</Badge></h3>
                                 <b>{movie?.popularity}</b>
                             </div>
                         </div>
                         <div className="movie-revenue">
-                            <p><b>BUDGET</b>&nbsp; :&nbsp; {movie?.budget.toLocaleString('ko-KR')}</p>
-                            <p><b>REVENUE</b>&nbsp; :&nbsp; {movie?.revenue.toLocaleString('ko-KR')} </p>
+                            <div><b>제작 예산</b>&nbsp; :&nbsp; {movie?.budget.toLocaleString('ko-KR')}</div>
+                            <div><b>수익</b>&nbsp; :&nbsp; {movie?.revenue.toLocaleString('ko-KR')} </div>
                         </div>
                         <div className="movie-homepage"><Link to={movie?.homepage} className="none-link">
                             <h5>{movie?.homepage}</h5></Link></div>

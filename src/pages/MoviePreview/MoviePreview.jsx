@@ -5,7 +5,11 @@ import {Alert, Container, Row, Spinner} from "react-bootstrap";
 
 const MoviePreview = ({id}) => {
 
-    const { data:movie, isLoading, isError, error } = useMovieDetailQuery(id);
+    let movieId = '';
+    if(id !== undefined){
+        movieId = id;
+    }
+    const { data:movie, isLoading, isError, error } = useMovieDetailQuery(movieId);
 
     const image = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`;
 

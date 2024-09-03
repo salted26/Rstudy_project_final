@@ -25,8 +25,10 @@ const MovieCard = ({movie}) => {
         navigate(`/movies/${movie.id}`);
     }
 
+
+
     const movieTitle = () => {
-        if(movie?.original_language === 'en') {
+        if(movie?.original_language === 'en' && movie?.original_title !== movie?.title) {
             return (
                 <>
                     <h3>{movie.original_title}</h3>

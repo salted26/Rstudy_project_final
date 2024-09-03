@@ -38,10 +38,14 @@
     color: white;
     font-weight: bold;
     font-size: 45px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .movie-title > img {
-    margin-left: 2rem;
     width: 35px;
     z-index: 5;
 }
@@ -65,6 +69,7 @@
 }
 
 .movie-vote {
+    padding-top: 1rem;
     display: flex;
     font-size: 20px;
 }
@@ -78,6 +83,7 @@
 }
 
 .movie-revenue {
+    padding-top: 1rem;
     width: 100%;
 
     display: flex;
@@ -95,6 +101,28 @@
 .movie-overview,
 .movie-vote,
 .movie-revenue,
-.movie-homepage {
+.movie-homepage,
+.movie-title {
     margin: 1rem 0 1rem 0;
+}
+
+@media (max-width:699px){
+    .movie-title{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1rem;
+    }
+    .movie-release,
+    .movie-run,
+    .movie-genres,
+    .movie-tag,
+    .movie-overview,
+    .movie-vote,
+    .movie-revenue,
+    .movie-homepage,
+    .movie-title {
+        margin: 0.1rem 0 0.1rem 0;
+    }
 }

@@ -29,7 +29,7 @@ const Banner = () => {
     return (
         <div className="banner-container" style={{backgroundImage:url}} >
             <div className="title-container">
-                <h1>{data?.results[0].title}</h1>
+                <h1>{data?.results[0].original_title}</h1>
                 <p>
                     {overview()}
                 </p>
