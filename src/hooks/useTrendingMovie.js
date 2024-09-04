@@ -12,6 +12,5 @@ export const useTrendingMovieQuery = () => {
         select: (data) => {
             return data.data.genres
         },
-        staleTime: 30000
     })
 }

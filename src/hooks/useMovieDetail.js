@@ -3,7 +3,7 @@ import api from "../utils/api"
 
 
 const fetchMovieDeatil = ({id}) => {
-    return api.get(`/movie/${id}?language=ko-KR`)
+    return api.get(`/movie/${id}?language=ko`)
 }
 
 export const useMovieDetailQuery = (id) => {
@@ -13,6 +13,5 @@ export const useMovieDetailQuery = (id) => {
         select: (data) => {
             return data.data
         },
-        retry: 1,
     })
 }

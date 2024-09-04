@@ -1,0 +1,128 @@
+.movie-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    margin-top: 2rem;
+}
+
+.detail-infomation {
+    width: 95%;
+    height: auto;
+}
+
+.first-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.poster-img {
+    width: 100%;
+    height: auto;
+}
+
+.movie-title{
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-title > img {
+    width: 35px;
+    z-index: 5;
+}
+
+.movie-tag {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.movie-genres,
+.movie-homepage{
+    display: flex;
+}
+
+.movie-overview > p {
+    color: red;
+}
+
+.movie-overview {
+    font-size: 18px;
+    padding: 1rem;
+}
+
+.movie-vote {
+    padding-top: 1rem;
+    display: flex;
+    font-size: 20px;
+}
+
+.movie-vote > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.movie-revenue {
+    padding-top: 1rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+}
+
+.movie-release,
+.movie-run,
+.movie-genres,
+.movie-overview,
+.movie-homepage,
+.movie-title {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.movie-tag,
+.movie-vote,
+.movie-revenue {
+    margin: 2rem 0 1rem 0;
+}
+
+@media (max-width:699px){
+    .movie-title{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1rem;
+    }
+    .movie-release,
+    .movie-run,
+    .movie-genres,
+    .movie-tag,
+    .movie-overview,
+    .movie-vote,
+    .movie-revenue,
+    .movie-homepage,
+    .movie-title {
+        margin: 0.1rem 0 0.1rem 0;
+    }
+}

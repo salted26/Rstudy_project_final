@@ -1,5 +1,5 @@
 .movie-card {
-    height: 300px;
+    height: 440px;
     width: auto;
     background-size: cover;
     cursor: pointer;
@@ -31,14 +31,18 @@
     align-items: flex-start;
 }
 
-.title {
+.overlay-content {
+    margin-left: 1rem;
+}
+
+.movie-card-title {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.genres {
+.movie-card-genre {
     display: flex;
     flex-direction: row;
 }

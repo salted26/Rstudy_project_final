@@ -8,8 +8,9 @@
     position: relative;
 }
 
-.title {
+.movie-slider-title {
     font-size: 25px;
+    margin-left : 1rem;
 }
 
 @media(max-width:699px) {

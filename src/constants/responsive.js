@@ -1,8 +1,8 @@
 export const responsive = {
     desktop: {
         breakpoint: { max: 3000, min: 1920 },
-        items: 6,
-        slidesToSlide: 4,
+        items: 5,
+        slidesToSlide: 5,
     },
     tablet: {
         breakpoint: { max: 1919, min: 700 },

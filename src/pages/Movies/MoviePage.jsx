@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './MoviePage.style.css'
 import {Alert, Col, Container, Row, Spinner} from "react-bootstrap";
 import {useSearchMovieQuery} from "../../hooks/useSearchMovie";
 import {useSearchParams} from "react-router-dom";
 import MovieCard from "../../common/MovieCard/MovieCard";
 import MoviePagination from "../../common/MoviePagination/MoviePagination";
-import MoviePreview from "../MoviePreview/MoviePreview";
 
 // 경로 2가지
 // 1. navbar 클릭해서 진행 => popular movie 보여주기
@@ -19,15 +18,10 @@ const MoviePage = () => {
 
     const [ query ] = useSearchParams();
     const [ page, setPage] = useState(1);
-    const [ movieData, setMovieData] = useState(null);
+    const [ setMovieData] = useState(null);
 
     const keyword = query.get("q")
     const { data, isLoading, isError, error } = useSearchMovieQuery({keyword, page});
-
-    const id = movieData?.id;
-
-    useEffect(() => {
-    }, []);
 
     if(isLoading){
         return (
@@ -54,9 +48,6 @@ const MoviePage = () => {
                         ))}
                     </Row>
                     <MoviePagination data={data} setPage={setPage} page={page}/>
-                </Col>
-                <Col lg={6} xs={12} className="movie-preview">
-                    <MoviePreview id={id}/>
                 </Col>
             </Row>
         </Container>

@@ -1,0 +1,39 @@
+.movie-review-container {
+    margin-top: 4rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 84%;
+}
+
+.movie-review-container > .accordion{
+    width: 100%;
+
+    --bs-accordion-bg : black;
+    --bs-accordion-color: white;
+    --bs-accordion-btn-color: #EEEBDD;
+    --bs-accordion-active-bg : #0C1844;
+    --bs-accordion-active-color : #EEEBDD;
+    --bs-accordion-border-color : black;
+}
+
+.review-title > button {
+    border-left: 6px solid #EEEBDD;
+}
+
+.review-top {
+    font-size: large;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1rem;
+}
+
+.review-top > .review {
+    font-size: 20px;
+}

@@ -10,7 +10,7 @@ const MovieSlider = ({ title, movies, responsive}) => {
 
     return (
         <div className="movie-slider">
-            <div className="title">{title}</div>
+            <div className="movie-slider-title">{title}</div>
             <Carousel
                 containerClass="carousel-container"
                 infinite={true}

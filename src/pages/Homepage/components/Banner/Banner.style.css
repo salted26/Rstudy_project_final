@@ -17,8 +17,7 @@
 
 .title-container {
     height: 56vh;
-    width: 40%;
-
+    width: 50%;
     color: white;
 
     display: flex;
@@ -27,6 +26,16 @@
     align-items: flex-start;
 
     padding: 2rem;
+}
+
+.title-container > h1,
+.title-container > p {
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.title-container > p {
+    font-size: 1.2rem;
 }
 
 @media screen and (max-width: 699px) {
