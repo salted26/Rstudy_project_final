@@ -9,8 +9,6 @@ const MovieRecommendations = ({id}) => {
 
     const { data, isLoading, isError, error } = useMovieRecommendations({id});
 
-    console.log(data);
-
     if(isLoading){
         return (<div> <h5>Loading.... </h5></div> )
     }

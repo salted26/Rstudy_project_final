@@ -11,7 +11,6 @@ const Banner = () => {
     const url = "url(" + image + ")";
 
     const overview = (overview) => {
-        console.log(overview.length)
         let content = overview.length;
         if(content > 150) {
             content = overview.substring(0, 150) + "...";

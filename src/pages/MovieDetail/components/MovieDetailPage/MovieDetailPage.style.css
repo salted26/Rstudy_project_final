@@ -106,6 +106,35 @@
     margin: 2rem 0 1rem 0;
 }
 
+.trailer-movie {
+    position: relative;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.movie-trailer {
+    display: flex;
+}
+
+.trailer-img {
+    width: 50px;
+}
+
+.trailer-btn-group > button {
+    --bs-btn-bg:black;
+    --bs-btn-border-color:none;
+    --bs-btn-hover-bg:none;
+    --bs-btn-hover-border-color:none;
+    --bs-btn-active-bg:none;
+    --bs-btn-active-border-color:none;
+    --bs-btn-disabled-bg:none;
+    --bs-btn-disabled-border-color:none;
+}
+
+
+
 @media (max-width:699px){
     .movie-title{
         display: flex;
