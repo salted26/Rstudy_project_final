@@ -68,10 +68,10 @@ const MovieDetailPage = ({id}) => {
                                 {movieTitle()}
                                 {movie?.adult === true ?
                                     <img
-                                        src="https://i.namu.wiki/i/vfVYas0SafuPqO2KatZMeqy8VFvWz--BuH04pV9W4vXQjOcUb7lN0om_G9VDlS8_OGdbZM1xYmeLpjAhbZd9Uw.svg"
+                                        src="https://i.namu.wiki/i/-zM9W5kqsBckPS-54BDoR88YbHp8G3x7opJuRSYbotfPCkJtYQQJK24aGitSSh5NQUnKOgWlCgzoNWd2f_1ggg.svg"
                                         alt="adult"/>
                                     : <img
-                                        src="https://i.namu.wiki/i/Uts-mBKobjds3ZRCx9h1tNaoyoP8uVjtXUyFkLLutFIin-Nwrc2ecvIiGfmGR5B7yOdtLiSdxzzhvrL4jH8RvTzTwRkbfg2UGmPbafP3uZfogttlMyu9ql2SQSh_achDHLGmauNcafF69GMBMJQarQ.svg"
+                                        src="https://i.namu.wiki/i/ARC33KSWCSNHeVZIpCG0teQsv-oaJ8XqU0DX4vEHmJJR1Rdtt3Bo_wCB9v2l0KGLb3aKG8WfRRWwCGqSGq1T_chno_ZjomXXPuIyi9MkcMFPALtDY88Ng1XssRVqqCGntgzNn2c-_rNglnHegastDg.svg"
                                         alt="All"/>}
 
                             </div>

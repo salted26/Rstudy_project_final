@@ -18,7 +18,7 @@ const MoviePage = () => {
 
     const [ query ] = useSearchParams();
     const [ page, setPage] = useState(1);
-    const [ setMovieData] = useState(null);
+    const [ movieData, setMovieData] = useState(null);
 
     const keyword = query.get("q")
     const { data, isLoading, isError, error } = useSearchMovieQuery({keyword, page});
@@ -36,22 +36,39 @@ const MoviePage = () => {
     if (isError) {
         return (<div> <Alert varian="danger">{error.message}</Alert> </div>)
     }
-    return (
-        <Container className="movie-page-container">
-            <Row>
-                <Col lg={6} xs={12}>
-                    <Row>
-                        {data?.results.map((item, index)=> (
-                            <Col lg={6} xs={12} key={index}>
-                                <MovieCard movie={item} setMovieData={setMovieData}/>
-                            </Col>
-                        ))}
-                    </Row>
-                    <MoviePagination data={data} setPage={setPage} page={page}/>
-                </Col>
-            </Row>
-        </Container>
-    );
+
+    console.log(data.results.length);
+
+    if(data.results.length !== 0) {
+        return (
+            <Container className="movie-page-container">
+                <Row>
+                    <Col lg={12}>
+                        <Row>
+                            {data?.results.map((item, index)=> (
+                                <Col lg={3} key={index}>
+                                    <MovieCard movie={item} setMovieData={setMovieData}/>
+                                </Col>
+                            ))}
+                        </Row>
+                        <MoviePagination data={data} setPage={setPage} page={page}/>
+                    </Col>
+                </Row>
+            </Container>
+        );
+    } else {
+        return (
+            <Container className="movie-page-container">
+                <Row>
+                    <Col lg={12}>
+                        <Row>
+                            <div>검색결과가 없습니다.</div>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
 };
 
 export default MoviePage;
