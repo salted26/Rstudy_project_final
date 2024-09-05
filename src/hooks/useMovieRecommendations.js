@@ -3,7 +3,7 @@ import api from "../utils/api"
 
 
 const fetchMovieRecommendation = ({id}) => {
-    return api.get(`/movie/${id}/recommendations`)
+    return api.get(`/movie/${id}/recommendations?language=ko`)
 }
 
 export const useMovieRecommendations = ({id}) => {

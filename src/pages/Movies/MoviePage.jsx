@@ -37,28 +37,32 @@ const MoviePage = () => {
         return (<div> <Alert varian="danger">{error.message}</Alert> </div>)
     }
 
-    console.log(data.results.length);
-
     if(data.results.length !== 0) {
         return (
             <Container className="movie-page-container">
                 <Row>
                     <Col lg={12}>
-                        <Row>
+                        <Row className="movie-card-container">
                             {data?.results.map((item, index)=> (
                                 <Col lg={3} key={index}>
                                     <MovieCard movie={item} setMovieData={setMovieData}/>
                                 </Col>
                             ))}
                         </Row>
-                        <MoviePagination data={data} setPage={setPage} page={page}/>
+                        {data.results.length > 4 ?
+                            <div className="pagination-container">
+                                <MoviePagination data={data} setPage={setPage} page={page}/>
+                            </div>
+                            :
+                            <></>
+                        }
                     </Col>
                 </Row>
             </Container>
         );
     } else {
         return (
-            <Container className="movie-page-container">
+            <Container className="noresults-container">
                 <Row>
                     <Col lg={12}>
                         <Row>

@@ -4,7 +4,7 @@ import YouTube, { YouTubeProps } from 'react-youtube';
 
 const MovieTrailer = ({videoData, lgShow, setLgShow, i}) => {
 
-    if(videoData[i] !== undefined || videoData[i] !== null) {
+    if(videoData?.length > 0) {
         return (
             <div>
                 <Modal
