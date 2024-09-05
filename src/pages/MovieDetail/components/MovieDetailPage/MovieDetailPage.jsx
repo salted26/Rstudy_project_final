@@ -91,7 +91,7 @@ const MovieDetailPage = ({id}) => {
                             </div>
                             : <div className="movie-overview"></div>
                         }
-                        {videoData.length > 1
+                        {videoData?.length > 1
                             ? <div className="movie-trailer">
                                 {videoData?.map((trailer, i) => (
                                     <div className="trailer-btn-group" key={i}>
