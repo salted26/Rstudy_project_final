@@ -65,7 +65,7 @@ const MovieReviews = () => {
                 </Accordion.Item>
                 ))}
             </Accordion> :
-                <>reviews not available</>
+                <></>
             }
         </div>
     );

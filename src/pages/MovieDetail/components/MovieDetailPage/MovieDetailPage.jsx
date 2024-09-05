@@ -91,16 +91,25 @@ const MovieDetailPage = ({id}) => {
                             </div>
                             : <div className="movie-overview"></div>
                         }
-                        <div className="movie-trailer">
-                            {videoData?.map((trailer, i)=> (
-                                <div className="trailer-btn-group" key={i}>
-                                    <Button onClick={() => {setLgShow(true); setIndex(i)}}>
-                                        <img src="https://img.freepik.com/premium-psd/play-icon-button-on-black-background_609989-2403.jpg" alt="trailer" className="trailer-img"/>
-                                    </Button>
-                                </div>
-                            ))}
-                            <MovieTrailer lgShow={lgShow} setLgShow={setLgShow} i={index} videoData={videoData} />
-                        </div>
+                        {videoData.length > 1
+                            ? <div className="movie-trailer">
+                                {videoData?.map((trailer, i) => (
+                                    <div className="trailer-btn-group" key={i}>
+                                        <Button onClick={() => {
+                                            setLgShow(true);
+                                            setIndex(i)
+                                        }}>
+                                            <img
+                                                src="https://img.freepik.com/premium-psd/play-icon-button-on-black-background_609989-2403.jpg"
+                                                alt="trailer" className="trailer-img"/>
+                                        </Button>
+                                    </div>
+                                ))}
+                                <MovieTrailer lgShow={lgShow} setLgShow={setLgShow} i={index} videoData={videoData}/>
+                            </div>
+                            :
+                            <></>
+                        }
                         <div className="movie-vote">
                             <div>
                                 <h3><Badge pill bg="success" size="sm">Average</Badge></h3>

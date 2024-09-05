@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPaginate from "react-paginate";
 import './MoviePagination.style.css'
 
-const MoviePagination = ({ data, setPage, page  }) => {
+const MoviePagination = ({ data, setPage, page}) => {
 
     // Invoke when user click to request another page.
     const handlePageClick = ({selected}) => {

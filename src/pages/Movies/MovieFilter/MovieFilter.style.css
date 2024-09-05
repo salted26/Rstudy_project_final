@@ -1,0 +1,11 @@
+.filter-container {
+    margin-bottom: 2rem;
+}
+
+.dropdown-menu.show {
+    background-color: black;
+}
+
+.dropdown-menu.show > button {
+    margin: 0.2rem;
+}
