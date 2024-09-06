@@ -1,40 +1,84 @@
 import React, {useState} from 'react';
 import './MovieFilter.style.css'
-import {Button, Dropdown, Form} from "react-bootstrap";
+import {Button, Dropdown} from "react-bootstrap";
 import {useMovieGenreQuery} from "../../../hooks/useMovieGenre";
-import {useNavigate} from "react-router-dom";
 
-const MovieFilter = ({movie, setMovieList}) => {
+const MovieFilter = ({movie, setMovieList, movieList}) => {
 
-    const navigate = useNavigate();
-    const {data:genre} = useMovieGenreQuery()
-    const sortName = ["ASC","DESC"];
-    const [ movieData, setMovieData ] = useState([])
+    const {data: genres} = useMovieGenreQuery()
+    const [sort, setSort] = useState("ASC");
+    const sortName = ["ASC", "DESC"];
+    const [movieData, setMovieData] = useState([])
+    const [filter, setFilter] = useState('');
 
     const selectSort = (e) => {
         setMovieData(movie.results);
-        if(e.target.value="ASC") {
-            setMovieList([...movieData].sort((a,b) => {return a.popularity - b.popularity}))
-        }
-        if(e.target.value="DESC") {
-            setMovieList([...movieData].sort((a,b) => {return b.popularity - a.popularity}))
+        if (sort !== e.target.value) {
+            setSort(e.target.value);
+            switch (sort) {
+                case "ASC" : {
+                    setMovieList([...movieData].sort((a, b) => {
+                        return a.popularity - b.popularity
+                    }));
+                    break;
+                }
+                case "DESC" : {
+                    setMovieList([...movieData].sort((a, b) => {
+                        return b.popularity - a.popularity
+                    }));
+                    break;
+                }
+                default :
+                    setMovieData([...movieData]);
+                    break;
+            }
+            return movieList;
+        } else {
+            alert("이미 정렬되어 있습니다.");
         }
     }
 
     const selectGenre = (e) => {
-        e.preventDefault();
-        let genreId = e.target.value;
-        navigate(`/movies?q=${genreId}`);
-    }
+        setMovieData(movie.results);
+        setFilter(e.target.value)
 
+        let tmps = [];
+
+        {movieData.map((item) => (
+            tmps.push(item.genre_ids)
+        ))}
+
+        let filteredProducts = [];
+        {tmps.map((tmp) => (
+             filteredProducts = movieData.filter((tmp) =>
+                tmp.toLowerCase().includes(filter.toLowerCase())
+            )
+        ))}
+
+        console.log(filteredProducts);
+
+        // const genreNameList = tmp?.map(item => {
+        //     const genreObj = item.filter((g)=> g === genreId);
+        //     console.log(genreObj)
+        //     return genreObj;
+        // })
+        // return genreNameList;
+
+    }
     return (
         <div className="filter-container">
             <div className="movie-popular-container">
-                <Form.Select onChange={(e)=>selectSort(e)}>
-                    {sortName.map((name, index)=>(
-                        <option value={name} key={index}>{name}</option>
-                    ))}
-                </Form.Select>
+                <Dropdown>
+                    <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                        Sort
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        {sortName?.map((name, index) => (
+                            <Button className={sort === name ? "sort-btn active" : "sort-btn"} variant="outline-secondary" value={name} key={index}
+                                    onClick={(e)=> selectSort(e)}>{name}</Button>
+                        ))}
+                    </Dropdown.Menu>
+                </Dropdown>
             </div>
             <div className="movie-genre-container">
                 <Dropdown>
@@ -42,8 +86,9 @@ const MovieFilter = ({movie, setMovieList}) => {
                         Genre
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        {genre?.map((genre, index) => (
-                            <Button variant="outline-secondary" value={genre.id} key={index} onClick={(e)=>selectGenre(e)}>{genre.name}</Button>
+                        {genres?.map((genre, index) => (
+                            <Button variant="outline-secondary" value={genre.id} key={index} className={sort === genre ? "genre-btn active" : "genre-btn"}
+                                    onClick={(e)=>selectGenre(e)}>{genre.name}</Button>
                         ))}
                     </Dropdown.Menu>
                 </Dropdown>

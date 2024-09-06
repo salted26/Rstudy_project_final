@@ -9,7 +9,7 @@ const MovieCard = ({movie}) => {
     const {data:genreData} = useMovieGenreQuery();
     const navigate = useNavigate();
 
-    const image = `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
+    const image = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`;
     const url = "url(" + image + ")";
 
     const showGenre = (genreIdList) => {

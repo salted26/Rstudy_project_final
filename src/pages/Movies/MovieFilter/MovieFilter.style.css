@@ -2,10 +2,30 @@
     margin-bottom: 2rem;
 }
 
+.movie-popular-container {
+    width: 100%;
+}
+
 .dropdown-menu.show {
     background-color: black;
 }
 
+.dropdown-menu.show > a {
+    color: white;
+}
+
+.dropdown-menu.show > a:hover {
+    color: white;
+    background-color: red;
+}
+
 .dropdown-menu.show > button {
     margin: 0.2rem;
+    --bs-btn-active-bg:red;
+    --bs-btn-active-color:white;
+    --bs-btn-active-border-color:red;
+}
+
+.dropdown-menu.show > button:hover {
+    background-color: red;
 }

@@ -8,7 +8,7 @@ const MovieListPage = ({data, setPage, page}) => {
 
     const [ movieList, setMovieList] = useState([]);
 
-    console.log(movieList);
+    console.log(movieList, movieList.length);
 
     if(movieList.length === 0){
     return (
@@ -57,7 +57,7 @@ const MovieListPage = ({data, setPage, page}) => {
                         }
                     </Col>
                     <Col lg={2}>
-                        <MovieFilter movie={movieList} setMovieList={setMovieList}/>
+                        <MovieFilter movie={movieList} setMovieList={setMovieList} movieList={movieList}/>
                     </Col>
                 </Row>
             </div>
