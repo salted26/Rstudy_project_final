@@ -16,6 +16,7 @@ import MovieListPage from "./MovieListPage/MovieListPage";
 const MoviePage = () => {
     const [ query ] = useSearchParams();
     const [ page, setPage] = useState(1);
+    const [ movieList, setMovieList] = useState([]);
     const keyword = query.get("q")
     const { data, isLoading, isError, error } = useSearchMovieQuery({keyword, page});
 
@@ -36,7 +37,7 @@ const MoviePage = () => {
     if(data.results.length !== 0) {
         return (
             <Container className="movie-page-container">
-                <MovieListPage data={data} page={page} setPage={setPage}/>
+                <MovieListPage data={data} page={page} setPage={setPage} movieList={movieList} setMovieList={setMovieList}/>
             </Container>
         );
     } else {

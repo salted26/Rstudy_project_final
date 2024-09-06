@@ -10,6 +10,7 @@ const MovieFilter = ({movie, setMovieList, movieList}) => {
     const sortName = ["ASC", "DESC"];
     const [movieData, setMovieData] = useState([])
     const [filter, setFilter] = useState('');
+    const [ test, setTest ] = useState([]);
 
     const selectSort = (e) => {
         setMovieData(movie.results);
@@ -40,30 +41,26 @@ const MovieFilter = ({movie, setMovieList, movieList}) => {
 
     const selectGenre = (e) => {
         setMovieData(movie.results);
-        setFilter(e.target.value)
+
+        console.log(filter)
 
         let tmps = [];
 
-        {movieData.map((item) => (
+        {movieData.map((item, index) => (
             tmps.push(item.genre_ids)
         ))}
 
         let filteredProducts = [];
-        {tmps.map((tmp) => (
-             filteredProducts = movieData.filter((tmp) =>
-                tmp.toLowerCase().includes(filter.toLowerCase())
+        {tmps?.map((index, tmp) => (
+             tmps.filter((tmp) =>
+                 // console.log(tmp)
+                 tmp === filter ? filteredProducts = tmp.toLowerCase().includes(filter.toLowerCase()) : false
             )
+
         ))}
+        console.log(filteredProducts)
 
-        console.log(filteredProducts);
-
-        // const genreNameList = tmp?.map(item => {
-        //     const genreObj = item.filter((g)=> g === genreId);
-        //     console.log(genreObj)
-        //     return genreObj;
-        // })
-        // return genreNameList;
-
+        // setMovieList(filteredProducts);
     }
     return (
         <div className="filter-container">
@@ -88,7 +85,7 @@ const MovieFilter = ({movie, setMovieList, movieList}) => {
                     <Dropdown.Menu>
                         {genres?.map((genre, index) => (
                             <Button variant="outline-secondary" value={genre.id} key={index} className={sort === genre ? "genre-btn active" : "genre-btn"}
-                                    onClick={(e)=>selectGenre(e)}>{genre.name}</Button>
+                                    onClick={(e)=> {selectGenre(e); setFilter(e.target.value)}}>{genre.name}</Button>
                         ))}
                     </Dropdown.Menu>
                 </Dropdown>

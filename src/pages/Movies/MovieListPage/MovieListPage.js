@@ -4,11 +4,10 @@ import MovieCard from "../../../common/MovieCard/MovieCard";
 import MoviePagination from "../../../common/MoviePagination/MoviePagination";
 import MovieFilter from "../MovieFilter/MovieFilter";
 
-const MovieListPage = ({data, setPage, page}) => {
+const MovieListPage = ({data, setPage, page, movieList, setMovieList}) => {
 
-    const [ movieList, setMovieList] = useState([]);
-
-    console.log(movieList, movieList.length);
+    // console.log(movieList.length);
+    // console.log(movieList)
 
     if(movieList.length === 0){
     return (
@@ -31,7 +30,7 @@ const MovieListPage = ({data, setPage, page}) => {
                     }
                 </Col>
                 <Col lg={2}>
-                    <MovieFilter movie={data} setMovieList={setMovieList} />
+                    <MovieFilter movie={data} setMovieList={setMovieList} movieList={movieList} />
                 </Col>
             </Row>
         </div>
