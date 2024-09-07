@@ -3,7 +3,10 @@ import './MoviePage.style.css'
 import {Alert, Col, Container, Row, Spinner} from "react-bootstrap";
 import {useSearchMovieQuery} from "../../hooks/useSearchMovie";
 import {useSearchParams} from "react-router-dom";
-import MovieListPage from "./MovieListPage/MovieListPage";
+import MovieCard from "../../common/MovieCard/MovieCard";
+import MoviePagination from "../../common/MoviePagination/MoviePagination";
+import MovieSort from "./MovieSort/MovieSort";
+import MovieFilter from "./MovieFilter/MovieFilter";
 
 // 경로 2가지
 // 1. navbar 클릭해서 진행 => popular movie 보여주기
@@ -16,11 +19,12 @@ import MovieListPage from "./MovieListPage/MovieListPage";
 const MoviePage = () => {
     const [ query ] = useSearchParams();
     const [ page, setPage] = useState(1);
-    const [ movieList, setMovieList] = useState([]);
     const keyword = query.get("q")
     const { data, isLoading, isError, error } = useSearchMovieQuery({keyword, page});
+    const [ movie, setMovie ] = useState();
 
     if(isLoading){
+
         return (
             <div className="spinner-area">
                 <Spinner color="whtie"
@@ -34,27 +38,46 @@ const MoviePage = () => {
         return (<div> <Alert varian="danger">{error.message}</Alert> </div>)
     }
 
-    if(data.results.length !== 0) {
-        return (
-            <Container className="movie-page-container">
-                <MovieListPage data={data} page={page} setPage={setPage} movieList={movieList} setMovieList={setMovieList}/>
-            </Container>
-        );
-    } else {
-        return (
-            <Container className="movie-page-container">
-                <Row>
-                    <Col lg={10}>
-                        <div>검색결과가 없습니다.</div>
-                    </Col>
-                    <Col lg={2}>
-                        <></>
-                    </Col>
-                </Row>
-            </Container>
-        )
-    };
+    return (
+        <Container className="movie-page-container">
+            <Row>
+                {data?.results.length > 0 ?
+                    <>
+                        <Col lg={10}>
+                            <Row className="movie-card-container">
+                                {data.results.map((item, index)=> (
+                                    <Col lg={3} key={index}>
+                                        <MovieCard movie={item} />
+                                    </Col>
+                                ))}
+                            </Row>
+                            {data.results.length > 4 ?
+                                <div className="pagination-container">
+                                    <MoviePagination data={movie} setPage={setPage} page={page}/>
+                                </div>
+                                :
+                                <></>
+                            }
+                        </Col>
+                        <Col lg={2}>
+                            <MovieSort movie={data} setMovie={setMovie} />
+                            <MovieFilter movie={data} setMovie={setMovie} />
+                        </Col>
+                    </>
+                    :
+                    <>
+                        <Col lg={10}>
+                            <div>검색결과가 없습니다.</div>
+                        </Col>
+                        <Col lg={2}>
+                            <></>
+                        </Col>
+                    </>
+                }
+            </Row>
 
+        </Container>
+    );
 };
 
 export default MoviePage;
