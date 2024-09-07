@@ -21,10 +21,9 @@ const MoviePage = () => {
     const [ page, setPage] = useState(1);
     const keyword = query.get("q")
     const { data, isLoading, isError, error } = useSearchMovieQuery({keyword, page});
-    const [ movie, setMovie ] = useState();
+    const [ movieList, setMovieList ] = useState();
 
     if(isLoading){
-
         return (
             <div className="spinner-area">
                 <Spinner color="whtie"
@@ -38,45 +37,76 @@ const MoviePage = () => {
         return (<div> <Alert varian="danger">{error.message}</Alert> </div>)
     }
 
-    return (
-        <Container className="movie-page-container">
-            <Row>
-                {data?.results.length > 0 ?
-                    <>
-                        <Col lg={10}>
-                            <Row className="movie-card-container">
-                                {data.results.map((item, index)=> (
-                                    <Col lg={3} key={index}>
-                                        <MovieCard movie={item} />
-                                    </Col>
-                                ))}
-                            </Row>
-                            {data.results.length > 4 ?
-                                <div className="pagination-container">
-                                    <MoviePagination data={movie} setPage={setPage} page={page}/>
-                                </div>
-                                :
-                                <></>
-                            }
-                        </Col>
-                        <Col lg={2}>
-                            <MovieSort movie={data} setMovie={setMovie} />
-                            <MovieFilter movie={data} setMovie={setMovie} />
-                        </Col>
-                    </>
-                    :
-                    <>
-                        <Col lg={10}>
-                            <div>검색결과가 없습니다.</div>
-                        </Col>
-                        <Col lg={2}>
-                            <></>
-                        </Col>
-                    </>
-                }
-            </Row>
+    console.log("movieList", movieList)
 
-        </Container>
+    return (
+        <>
+            { data?.results.length > 0 ?
+            <Container className="movie-page-container" >
+                <Row>
+                        { movieList === undefined ?
+                            <>
+                                <Col lg={10}>
+                                    <Row className="movie-card-container">
+                                        {data?.results.map((item, index)=> (
+                                            <Col lg={3} key={index}>
+                                                <MovieCard movie={item} />
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                    {data.results.length > 4 ?
+                                        <div className="pagination-container">
+                                            <MoviePagination data={data} setPage={setPage} page={page}/>
+                                        </div>
+                                        :
+                                        <></>
+                                    }
+                                </Col>
+                                <Col lg={2}>
+                                    <MovieSort movie={data} setMovieList={setMovieList} movieList={movieList}/>
+                                    <MovieFilter movie={data} setMovieList={setMovieList} movieList={movieList}/>
+                                </Col>
+                            </>
+                            :
+                            <>
+                                <Col lg={10}>
+                                    <Row className="movie-card-container">
+                                        {movieList?.results.map((item, index)=> (
+                                            <Col lg={3} key={index}>
+                                                <MovieCard movie={item} />
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                    {movieList?.results.length > 4 ?
+                                        <div className="pagination-container">
+                                            <MoviePagination data={movieList} setPage={setPage} page={page}/>
+                                        </div>
+                                        :
+                                        <></>
+                                    }
+                                </Col>
+                                <Col lg={2}>
+                                    <MovieSort movie={data} setMovieList={setMovieList} movieList={movieList}/>
+                                    <MovieFilter movie={data} setMovieList={setMovieList} movieList={movieList}/>
+                                </Col>
+                            </>
+                        }
+
+                </Row>
+            </Container>
+            :
+            <Container style={{ display: (data?.results.length > 0) ? "none" : "block" }}>
+                <Row>
+                    <Col lg={10}>
+                        <div>검색결과가 없습니다.</div>
+                    </Col>
+                    <Col lg={2}>
+                        <></>
+                    </Col>
+                </Row>
+            </Container>
+        }
+        </>
     );
 };
 

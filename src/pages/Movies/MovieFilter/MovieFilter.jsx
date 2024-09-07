@@ -15,7 +15,6 @@ const MovieFilter = ({movie, setMovieList, movieList}) => {
 
         let tmps = [];
 
-        console.log(movie.results);
 
         // let filteredProducts = [];
         // {tmps?.map((index, tmp) => (
